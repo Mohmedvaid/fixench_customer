@@ -1,7 +1,7 @@
 import { StyleSheet, Text, FlatList, View } from "react-native";
 import React, { useState } from "react";
 
-import ListItems from "../components/ListItem";
+import ListItem from "../components/ListItem";
 import Screen from "../components/Screen";
 import ListItemSeperator from "../components/ListItemSeperator";
 import ListItemDeleteAction from "../components/ListItemDeleteAction";
@@ -35,7 +35,7 @@ const MessagesScreen = () => {
         data={messages}
         keyExtractor={(message) => message.id.toString()}
         renderItem={({ item }) => (
-          <ListItems
+          <ListItem
             title={item.title}
             subTitle={item.description}
             image={item.image}
