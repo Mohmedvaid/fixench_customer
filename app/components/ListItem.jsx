@@ -11,13 +11,13 @@ const ListItem = ({
   subTitle,
   onPress,
   renderRightActions,
-  ImageComponent,
+  IconComponent,
 }) => {
   return (
     <Swipeable renderRightActions={renderRightActions}>
       <TouchableHighlight onPress={onPress} underlayColor={colors.light}>
         <View style={styles.container}>
-          {ImageComponent}
+          {IconComponent}
           {image && <Image style={styles.image} source={image} />}
           <View style={styles.detailsContainer}>
             <AppText style={styles.title}>{title}</AppText>
