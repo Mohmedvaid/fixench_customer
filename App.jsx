@@ -1,27 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet, Switch } from "react-native";
 import Screen from "./app/components/Screen";
-import AppTextInput from "./app/components/AppTextInput";
-import AppPicker from "./app/components/AppPicker";
-import LoginScreen from "./app/screens/LoginScreen";
-import ListingEditScreen from "./app/screens/ListingEditScreen";
-import ListItem from "./app/components/ListItem";
+import * as ImagePicker from "expo-image-picker";
+import * as Permissions from "expo-permissions";
 
 export default function App() {
-  return (
-    <Screen>
-      <ListItem
-        title="Hello klasdfj alsdfj klasdfj klasj dfklasj fklasdjfklas jdfko;ajsdklfjaslkdfjaklsdfjaskf jaskldf jakls fjklasd fjoaiw faowjfaowfjaie fijpr af ashdf jasfkashdf jashdfj as fhapwufhw efhasdfjasdfhajsd fhajsdhf ja"
-        subTitle="Hello klasdfj alsdfj klasdfj klasj dfklasj fklasdjfklas jdfko;ajsdklfjaslkdfjaklsdfjaskf jaskldf jakls fjklasd fjoaiw faowjfaowfjaie fijpr af ashdf jasfkashdf jashdfj as fhapwufhw efhasdfjasdfhajsd fhajsdhf ja"
-        image={require("./app/assets/mosh.jpg")}
-      />
-      <ListItem
-        title="Hello"
-        subTitle="World"
-        image={require("./app/assets/mosh.jpg")}
-      />
-    </Screen>
-  );
+  const requestPermission = async () => {
+    const { granted } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+    // const results = await Permissions.askAsync(Permissions.LOCATION_FOREGROUND);
+    if (!granted) {
+      alert("Sorry, we need camera roll permissions to make this work!");
+    }
+  };
+
+  useEffect(() => {
+    requestPermission();
+  }, []);
+  return <Screen></Screen>;
 }
 
 const styles = StyleSheet.create({

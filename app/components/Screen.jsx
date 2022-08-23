@@ -7,7 +7,7 @@ const Screen = ({ children, style }) => {
   return (
     <SafeAreaView style={[styles.screen, style]}>
       {/* TODO applying duplicate styles on safeareaview as well as view, this might add duplicate styles. Might need a fix */}
-      <View style={style}>{children}</View>
+      <View style={[styles.view, style]}>{children}</View>
     </SafeAreaView>
   );
 };
@@ -18,5 +18,8 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
     paddingTop: Constants.statusBarHeight,
+  },
+  view: {
+    flex: 1,
   },
 });
